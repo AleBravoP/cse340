@@ -4,3 +4,185 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* ----- BODY & MAIN ----*/
+
+
+/* ----- HEADER ---------*/
+#top-header .siteName {font-size: 40px;}
+
+#top-header .siteName a {text-decoration: none;}
+
+#top-header #tools {
+  display: inline;
+  float: right;
+}
+
+/* ----- NAVIGATION -----*/
+nav {
+  margin-top: 1rem;
+  background-color: #000000; 
+}
+
+nav ul {
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+}
+
+nav li {
+  flex: 1; 
+  text-align: center; 
+}
+
+nav a {
+  display: block; 
+  padding: 15px; 
+  text-decoration: none;
+  color: white; 
+}
+
+/* Style for hover effect */
+nav a:hover {
+  background-color: #ffffff34;
+}
+
+/* ----- BODY -----------*/
+
+/* hero */
+.hero {
+  position: relative;
+  border-style: none; 
+  overflow: hidden;
+  min-height: 4rem;
+  margin: 10px 0;
+  padding: 0;
+  color: #1381b4;
+}
+
+div.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+div.action-call p.bold {
+  margin: 0;
+  font-size: large;
+  font-weight: bolder;
+}
+
+div.action-call {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 43%;
+  background-color: #ffffffde;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+div.action-call button.hero-button {
+  border-radius: 5px;
+  padding: .3rem;
+  border: none;
+  color: #fff;
+  background-color: #10709c;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+div.action-call button.hero-button:hover {
+  background-color: #106891;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Delorean Upgrades */
+section.upgrades-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 20px 8px;
+  grid-template-areas: 
+    "up-title up-title"
+    ". ."
+    ". .";
+}
+
+#up-title {
+  grid-area: up-title;
+  margin-bottom: 0;
+}
+
+div.up-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  background-color: #10709c;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+.upgrades-grid div {
+  text-align: center;
+}
+
+/* ----- FOOTER -----*/
+
+
+
+
+
+/* ------------ L A R G E   V I E W ------------ */
+@media only screen and (min-width: 64rem) {
+  /* ----- BODY ----*/
+  body {
+    background-image: url(/images/site/small_check.jpg);
+    background-repeat: repeat;
+  }
+
+  /* ----- MAIN ----*/
+  main {
+    margin: 2rem auto;
+    padding: .5rem;
+    width: 85%;
+    max-width: 1000px;
+    border: 4px solid #10709c;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  /* Hero Call */
+.hero { font-size: large;}
+
+  div.hero img {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  div.action-call {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    max-width: 200px;
+  }
+  
+
+  /* Delorean Upgrades */
+  .home-content {
+    justify-items: center;
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 20px; 
+    grid-template-areas: 
+      "upgrades-grid reviews"; 
+  }
+  .reviews {grid-area: reviews;}
+
+  .up-img {width: 170px;}
+}
