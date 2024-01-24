@@ -1,9 +1,9 @@
 const invModel = require("../models/inventory-model")
 const Util = {}
-
+ 
 /* ************************
- * Constructs the nav HTML unordered list
- ************************** */
+* Constructs the nav HTML unordered list
+************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
   let list = "<ul>"
