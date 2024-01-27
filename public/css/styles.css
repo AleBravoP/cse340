@@ -13,10 +13,12 @@
 
 #top-header .siteName a {text-decoration: none;}
 
-#top-header #tools {
+#top-header div {
   display: inline;
   float: right;
 }
+
+#top-header div a {text-decoration: none;}
 
 /* ----- NAVIGATION -----*/
 nav {
@@ -130,6 +132,35 @@ div.up-img {
 .upgrades-grid div {
   text-align: center;
 }
+
+
+/* ----- CLASSIFICATION GRID -----*/
+ul#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+ul#inv-display li {
+  list-style: none;
+  margin: 1rem 2rem;
+  padding: 1rem 0;
+  width: 200px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+ul#inv-display li a {margin: auto 0;}
+
+ul#inv-display li .namePrice {
+  margin-top: auto; 
+  height: 130px;
+}
+
 
 /* ----- FOOTER -----*/
 
