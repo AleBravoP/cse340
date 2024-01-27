@@ -6,19 +6,28 @@
 }
 
 /* ----- BODY & MAIN ----*/
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300&display=swap');
+body {font-family: 'Archivo', sans-serif;}
 
 /* ----- HEADER ---------*/
-#top-header .siteName {font-size: 40px;}
+#top-header .siteName {
+  font-size: 40px;
+}
 
-#top-header .siteName a {text-decoration: none;}
+#top-header .siteName a {
+  text-decoration: none;
+  color: #1381b4;
+}
 
 #top-header div {
   display: inline;
   float: right;
 }
 
-#top-header div a {text-decoration: none;}
+#top-header div a {
+  text-decoration: none;
+  color: #000000;
+}
 
 /* ----- NAVIGATION -----*/
 nav {
@@ -126,11 +135,22 @@ div.up-img {
   height: 90px;
   background-color: #10709c;
   border-radius: 5px;
-  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 8px 0 #0000004d;
 }
 
 .upgrades-grid div {
   text-align: center;
+}
+
+.upgrades-grid div a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #1381b4;
+}
+
+.upgrades-grid div a:hover {
+  color: #10709c; 
+  text-shadow: #0000004d;
 }
 
 
@@ -158,9 +178,14 @@ ul#inv-display li a {margin: auto 0;}
 
 ul#inv-display li .namePrice {
   margin-top: auto; 
-  height: 130px;
+  padding: 0 5px;
+  height: 145px;
 }
 
+.namePrice h2 a {
+  text-decoration: none;
+  color: #1381b4;
+}
 
 /* ----- FOOTER -----*/
 
