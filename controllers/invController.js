@@ -22,15 +22,21 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByInventoryId = async function (req, res, next) {
   const inv_id = req.params.inv_id
   const data = await invModel.getCarByInventoryId(inv_id)
-  console.log(typeof data); // Add this line to log the data
-  const item_view = await utilities.buildItemDetails(data)
-  let nav = await utilities.getNav()
-  const itemName = data.inv_make + ' ' + data.inv_model
-  res.render("./inventory/item", {
-    title: data.inv_year + ' ' + itemName,
-    nav,
-    item_view,
-  })
+  if (data) {
+    console.log(typeof data); // Add this line to log the data
+    const item_view = await utilities.buildItemDetails(data)
+    let nav = await utilities.getNav()
+    const itemName = data.inv_make + ' ' + data.inv_model
+    res.render("./inventory/item", {
+      title: data.inv_year + ' ' + itemName,
+      nav,
+      item_view,
+    });
+  } else {
+    const err = new Error("Not Found");
+    err.status = 404;
+    next(err);
+  }
 }
 
 module.exports = invCont
