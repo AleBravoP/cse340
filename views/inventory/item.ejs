@@ -1,0 +1,14 @@
+<!-- Content Heading -->
+
+<!-- Describe the content of the view with a <title> element -->
+    <% if (title) { %>
+        <h1><%= title %></h1>
+        <% } else {
+          res.redirect('/')
+        } %>
+    
+    <!-- display a message in a view -->
+    <%# messages() %>
+    
+    <!-- An EJS code block with an "unescaped" indicator — to allow HTML to be displayed. -->
+    <%- item_view %>

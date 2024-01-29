@@ -12,6 +12,7 @@ body {font-family: 'Archivo', sans-serif;}
 /* ----- HEADER ---------*/
 #top-header .siteName {
   font-size: 40px;
+  font-weight: bold;
 }
 
 #top-header .siteName a {
@@ -79,11 +80,12 @@ div.hero img {
   display: block;
 }
 
-div.action-call p.bold {
+div.action-call h2.bold {
   margin: 0;
-  font-size: large;
-  font-weight: bolder;
+  font-size: medium;
 }
+
+div.action-call p {margin-top: .5rem;}
 
 div.action-call {
   position: absolute;
@@ -145,16 +147,16 @@ div.up-img {
 .upgrades-grid div a {
   text-decoration: none;
   font-weight: bold;
-  color: #1381b4;
+  color: #10709c;
 }
 
 .upgrades-grid div a:hover {
-  color: #10709c; 
+  color: #0d628a; 
   text-shadow: #0000004d;
 }
 
 
-/* ----- CLASSIFICATION GRID -----*/
+/* CLASSIFICATION GRID */
 ul#inv-display {
   display: flex;
   flex-wrap: wrap;
@@ -187,9 +189,39 @@ ul#inv-display li .namePrice {
   color: #1381b4;
 }
 
+/* Car View */
+div#car-view {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img#car-pic {
+  width: 100%; 
+  max-width: 450px;
+  margin-bottom: 1rem; 
+}
+
+div#car-info {
+  flex: 1; 
+  margin-left: 1rem; 
+}
+
+div#car-info p {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: .5rem;
+}
+
+div#car-info #price, div#car-info #color {
+  background-color: #6666662d;
+}
+
+
 /* ----- FOOTER -----*/
 
-
+footer {
+  margin-top: 2rem;
+}
 
 
 
@@ -241,4 +273,11 @@ ul#inv-display li .namePrice {
   .reviews {grid-area: reviews;}
 
   .up-img {width: 170px;}
+
+  /* Car View */
+  img#car-pic {
+    max-width: 45%; /* Allow stretching in large views */
+  }
+
+
 }
