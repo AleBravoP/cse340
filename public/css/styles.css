@@ -219,8 +219,8 @@ div#car-info #price, div#car-info #color {
 /* Flash Message */
 p.flash-message {color: #b32121;}
 
-/* Login View */
-div#login {
+/* Login & Register View */
+div#login, div#register {
   padding: 1rem;
   margin: auto;
   max-width: 80%;
@@ -229,12 +229,12 @@ div#login {
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
-div#login form label {
+div#login form label, div#register form label {
   color: #fff;
   font-weight: bold;
 }
 
-div#login form input {
+div#login form input, div#register form input {
   margin: .5rem 0 1rem 0;
   padding: .5rem;
   width: 100%;
@@ -243,7 +243,7 @@ div#login form input {
   border: none;
 }
 
-div#login button {
+div#login button, div#register button {
   width: 100%;
   margin: 2.5rem 0 1rem 0;
   padding: .3rem;
@@ -253,16 +253,16 @@ div#login button {
   background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
 }
 
-div#login button:hover {
+div#login button:hover, div#register button:hover {
   background:linear-gradient( to bottom, #adb7bd, #ebebeb, #aeb8be);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-div#login p {
+div#login p, div#register p {
   color: #fff;
   text-align: center;
 }
-div#login p a {
+div#login p a, div#register p a {
   color: #fff; 
   font-weight: bold;
 }
@@ -329,7 +329,7 @@ footer {
     max-width: 45%; /* Allow stretching in large views */
   }
 
-  div#login {
+  div#login, div#register {
     max-width: 40%;
   }
 
