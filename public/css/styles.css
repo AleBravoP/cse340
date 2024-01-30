@@ -216,6 +216,56 @@ div#car-info #price, div#car-info #color {
   background-color: #6666662d;
 }
 
+/* Flash Message */
+p.flash-message {color: #b32121;}
+
+/* Login View */
+div#login {
+  padding: 1rem;
+  margin: auto;
+  max-width: 80%;
+  background-color: #10709c;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+div#login form label {
+  color: #fff;
+  font-weight: bold;
+}
+
+div#login form input {
+  margin: .5rem 0 1rem 0;
+  padding: .5rem;
+  width: 100%;
+  display: inline-block;
+  border-radius: 5px;
+  border: none;
+}
+
+div#login button {
+  width: 100%;
+  margin: 2.5rem 0 1rem 0;
+  padding: .3rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+  background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
+}
+
+div#login button:hover {
+  background:linear-gradient( to bottom, #adb7bd, #ebebeb, #aeb8be);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+div#login p {
+  color: #fff;
+  text-align: center;
+}
+div#login p a {
+  color: #fff; 
+  font-weight: bold;
+}
 
 /* ----- FOOTER -----*/
 
@@ -279,5 +329,8 @@ footer {
     max-width: 45%; /* Allow stretching in large views */
   }
 
+  div#login {
+    max-width: 40%;
+  }
 
 }

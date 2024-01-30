@@ -23,6 +23,9 @@ const errorRoute = require("./routes/errorRoute")
 const session = require("express-session")
 const pool = require('./database/')
 
+// Require the account route file
+const accountRoute = require("./routes/accountRoute")
+const flash = require('connect-flash');
 
 /* ***********************
  * Middleware
@@ -45,6 +48,7 @@ app.use(function(req, res, next){
   next()
 })
 
+app.use(flash());
 
 /* ***********************
  * View Engine and Templates
@@ -64,6 +68,9 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
+// Add account route
+app.use("/account", accountRoute)
+
 // Error routes
 app.use("/error", errorRoute)
 
@@ -71,6 +78,8 @@ app.use("/error", errorRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page :('})
 })
+
+app.use(flash());
 
 /* ***********************
 * Express Error Handler
