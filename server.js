@@ -21,11 +21,13 @@ const errorRoute = require("./routes/errorRoute")
 
 // Apply express-session package and DB connection
 const session = require("express-session")
+
+const flash = require('connect-flash');
+
 const pool = require('./database/')
 
 // Require the account route file
 const accountRoute = require("./routes/accountRoute")
-const flash = require('connect-flash');
 
 const bodyParser = require("body-parser")
 
@@ -43,14 +45,14 @@ app.use(session({
   name: 'sessionId',
 }))
 
+app.use(flash());
+
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-
-app.use(flash());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
@@ -84,7 +86,7 @@ app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page :('})
 })
 
-app.use(flash());
+// app.use(flash());
 
 /* ***********************
 * Express Error Handler
