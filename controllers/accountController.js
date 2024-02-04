@@ -52,11 +52,11 @@ async function registerAccount(req, res) {
       flash: req.flash(),
     })
   } else {
-    req.flash("notice", "Sorry, the registration failed.")
+    req.flash("error", "Sorry, the registration failed.")
     res.status(501).render("account/register", {
       title: "Registration",
       nav,
-      errors:null,
+      errors:req.flash("error"),
     })
   }
 }
