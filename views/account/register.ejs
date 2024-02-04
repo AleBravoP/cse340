@@ -3,9 +3,9 @@
 <h1><%= title %></h1>
 
 <!-- Flash message -->
-<% if (messages && Array.isArray(messages) && messages.length > 0) { %>
-  <% messages.forEach(function(message) { %>
-    <p class="flash-message"><%= message %></p>
+<% if (typeof errors !== 'undefined' && Array.isArray(errors) && errors.length > 0) { %>
+  <% errors.forEach(function(error) { %>
+    <p class="flash-message"><%= error.msg %></p>
   <% }); %>
 <% } %>
 

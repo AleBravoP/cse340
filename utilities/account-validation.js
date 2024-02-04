@@ -53,9 +53,9 @@ validate.registationRules = () => {
  * ***************************** */
 validate.checkRegData = async (req, res, next) => {
   const { account_firstname, account_lastname, account_email } = req.body
-  let errors = [];
-  errors = validationResult(req)
-  if (!errors.isEmpty()) {
+  const errors = validationResult(req).array();
+
+  if (errors.length > 0) {
     let nav = await utilities.getNav()
     console.log(errors)
     res.render("account/register", {
