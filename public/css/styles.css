@@ -267,6 +267,14 @@ div#login p a, div#register p a {
   font-weight: bold;
 }
 
+
+/* MANAGEMENT VIEW */
+div#mgmt-menu a {
+  display: block;
+  padding: .8rem 0;
+}
+
+
 /* ----- FOOTER -----*/
 
 footer {

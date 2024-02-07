@@ -31,6 +31,9 @@ const accountRoute = require("./routes/accountRoute")
 
 const bodyParser = require("body-parser")
 
+// Require the /mgmt (management) route file
+const mgmtRoute = require("./routes/mgmt-route")
+
 /* ***********************
  * Middleware
  * ************************/
@@ -77,6 +80,9 @@ app.use("/inv", inventoryRoute)
 
 // Add account route
 app.use("/account", accountRoute)
+
+// Add management route
+app.use("/mgmt", mgmtRoute)
 
 // Error routes
 app.use("/error", errorRoute)
