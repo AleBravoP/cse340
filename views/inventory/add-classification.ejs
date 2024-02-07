@@ -1,0 +1,21 @@
+<%- contentFor('body') %>
+
+<h1><%= title %></h1>
+
+<!-- Flash message -->
+<% if (typeof errors !== 'undefined' && Array.isArray(errors) && errors.length > 0) { %>
+  <% errors.forEach(function(error) { %>
+    <p class="flash-message"><%= error.msg %></p>
+  <% }); %>
+<% } %>
+
+<div id="add-classification">
+    <form action="/mgmt/add-classification" method="post">
+        <label for="class-name">New classification name:</label>
+        <span>Name must be alphabetic characters only.</span>
+        <input type="text" id="class-name" name="classification_name" pattern="^[a-zA-Z]+$" required value="<%= locals.classification_name %>">
+  
+        <button type="submit">ADD CLASSIFICATION</button>
+    </form>
+    
+</div>
