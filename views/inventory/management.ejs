@@ -2,12 +2,12 @@
 
 <h1><%= title %></h1>
 
-<!-- Flash message -->
-<% if (typeof errors !== 'undefined' && Array.isArray(errors) && errors.length > 0) { %>
-  <% errors.forEach(function(error) { %>
-    <p class="flash-message"><%= error.msg %></p>
+<!-- Flash messages -->
+<% Object.keys(flash).forEach(function(type) { %>
+  <% flash[type].forEach(function(message) { %>
+    <p class="flash-message"><%= message %></p>
   <% }); %>
-<% } %>
+<% }); %>
 
 <div id="mgmt-menu">
     <a href="/mgmt/add-classification" title="Click here to add a new classification">Add New Classification</a> 

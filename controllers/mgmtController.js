@@ -7,7 +7,7 @@ const mgmtModel = require("../models/mgmt-model.js")
 async function buildMgmt(req, res, next) {
     let nav = await utilities.getNav()
 
-    console.log("Flash messages:", req.flash());
+    console.log("buildMgmt Flash messages:", req.flash()); // added this console.log to check flash mssgs
     
     res.render("inventory/management", { // path is relative to the views folder
       title: "Management",
@@ -33,65 +33,45 @@ async function buildAddClassification(req, res, next) {
 /* ****************************************
 *  Process Add-Classification
 * *************************************** */
-// async function addClassification(req, res) {
-//     let nav = await utilities.getNav()
-//     const { classification_name } = req.body
-  
-//     const regResult = await mgmtModel.addClassification(classification_name)
-  
-//     if (regResult) {
-//       req.flash(
-//         "notice",
-//         `Congratulations, you\'ve registered new ${classification_name} car classification.`
-//       )
-//       res.status(201).render("inventory/management", {
-//         title: "Management",
-//         nav,
-//         flash: req.flash(),
-//       })
-//     } else {
-//       req.flash("error", "Sorry, adding the new classification failed.")
-//       res.status(501).render("inventory/add-classification", {
-//         title: "Add New Classification",
-//         nav,
-//         errors:req.flash("error"),
-//       })
-//     }
-//   }
-
 async function addClassification(req, res) {
-  const { classification_name } = req.body;
-
-  try {
-      const regResult = await mgmtModel.addClassification(classification_name);
-
-      if (regResult instanceof Error) {
-          req.flash("error", "Sorry, adding the new classification failed.");
-          console.error("Error adding classification:", regResult);
-          res.status(501).render("inventory/add-classification", {
-              title: "Add New Classification",
-              nav: await utilities.getNav(),
-              errors: req.flash("error"),
-              classification_name,
-          });
-      } else {
-          req.flash(
-              "notice",
-              `Congratulations, you\'ve registered new ${classification_name} car classification.`
-          );
-          res.redirect("/mgmt"); // Redirect to the management view
-      }
-  } catch (error) {
-      console.error("Error in addClassification:", error);
-      req.flash("error", "Sorry, something went wrong.");
-      res.status(500).render("inventory/add-classification", {
-          title: "Add New Classification",
-          nav: await utilities.getNav(),
-          errors: req.flash("error"),
-          classification_name,
-      });
+    const { classification_name } = req.body;
+  
+    try {
+        const regResult = await mgmtModel.addClassification(classification_name);
+  
+        if (regResult instanceof Error) {
+            req.flash("error", "Sorry, adding the new classification failed.");
+            console.error("Error adding classification:", regResult);
+            res.status(501).render("inventory/add-classification", {
+                title: "Add New Classification",
+                nav: await utilities.getNav(),
+                errors: req.flash("error"),
+                classification_name,
+            });
+        } else {
+            console.log("addClassification Flash messages:", req.flash()); // added this console.log to check flash mssgs
+            req.flash(
+                "notice",
+                `Congratulations, you\'ve registered the new ${classification_name} car classification.`
+            );
+            let nav = await utilities.getNav();
+            res.render("inventory/management", {
+                title: "Management",
+                nav,
+                flash: req.flash(),
+            });
+      }} catch (error) {
+        console.error("Error in addClassification:", error);
+        req.flash("error", "Sorry, something went wrong.");
+        res.status(500).render("inventory/add-classification", {
+            title: "Add New Classification",
+            nav: await utilities.getNav(),
+            errors: req.flash("error"),
+            classification_name,
+        });
+    }
   }
-}
+  
 
 
 
