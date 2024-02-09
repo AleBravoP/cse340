@@ -2,6 +2,8 @@ const utilities = require(".")
 const { body, validationResult } = require("express-validator")
 const validate = {}
 const mgmtModel = require("../models/mgmt-model")
+const invModel = require("../models/inventory-model")
+
 
 /*  **********************************
  *  Registration Data Validation Rules
@@ -43,6 +45,26 @@ validate.checkClassificationData = async (req, res, next) => {
     return
   }
   next()
+}
+
+/* ************************
+* Constructs the select HTML options
+************************** */
+validate.getClassInput = async function (req, res, next) {
+  let data = await invModel.getClassifications()
+  let select = '<select id="classification_name" name="classification_name" required>'
+  select += '<option value="" disabled selected>Choose a classification</option>'
+  data.rows.forEach((row) => {
+    select += "<option "
+    select +=
+      'value="' +
+      row.classification_name +
+      '">' +
+      row.classification_name 
+    select += "</option>"
+  })
+  select += "</select>"
+  return select
 }
 
 module.exports = validate;

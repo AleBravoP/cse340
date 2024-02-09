@@ -1,0 +1,49 @@
+<%- contentFor('body') %>
+
+<h1><%= title %></h1>
+
+<!-- Flash message -->
+<% if (typeof errors !== 'undefined' && Array.isArray(errors) && errors.length > 0) { %>
+  <% errors.forEach(function(error) { %>
+    <p class="flash-message"><%= error.msg %></p>
+  <% }); %>
+<% } %>
+
+<div id="add">
+    <span>All fields are required*</span>
+    <br>
+    <form action="/mgmt/add-inventory" method="post">
+        <label for="classification_name">Classification:</label>
+        <%- select%>
+
+        <label for="inv_make">Make:</label>
+        <input type="text" id="inv_make" name="inv_make" pattern="^[a-zA-Z]{3,}$" placeholder="Min of 3 characters" required value="<%= locals.inv_make %>">
+
+        <label for="inv_model">Model:</label>
+        <input type="text" id="inv_model" name="inv_model" pattern="^[a-zA-Z]{3,}$" placeholder="Min of 3 characters" required value="<%= locals.inv_model %>">
+
+        <label for="inv_description">Description:</label>
+        <textarea id="inv_description" name="inv_description" required></textarea>
+
+        <label for="inv_image">Image Path:</label>
+        <input type="text" id="inv_image" name="inv_image" pattern="^[a-zA-Z0-9\/\-_.]+$" value="/images/vehicles/no-image.png" required>
+
+        <label for="inv_thumbnail">Thumbnail Path:</label>
+        <input type="text" id="inv_thumbnail" name="inv_thumbnail" pattern="^[a-zA-Z0-9\/\-_.]+$" value="/images/vehicles/no-image-tn.png" required>
+
+        <label for="inv_price">Price:</label>
+        <input type="number" id="inv_price" name="inv_price" placeholder="Decimal or Integer" required value="<%= locals.inv_price %>">
+
+        <label for="inv_year">Year</label>
+        <input type="number" id="inv_year" name="inv_year" placeholder="4-digit year" required value="<%= locals.inv_year %>">
+
+        <label for="inv_miles">Miles:</label>
+        <input type="number" id="inv_miles" name="inv_miles" placeholder="Digits only" required value="<%= locals.inv_miles %>">
+
+        <label for="inv_color">Color:</label>
+        <input type="text" id="inv_color" name="inv_color" pattern="^[a-zA-Z]{3,}$" required value="<%= locals.inv_color %>">
+
+        <button type="submit">ADD ITEM</button>
+    </form>
+    
+</div>

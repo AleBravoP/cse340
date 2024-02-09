@@ -10,6 +10,7 @@ router.get("/", utilities.handleErrors(mgmtController.buildMgmt));
 
 // Route to build add-classification view
 router.get("/add-classification", utilities.handleErrors(mgmtController.buildAddClassification));
+router.get("/add-inventory", utilities.handleErrors(mgmtController.buildAddInventory));
 
 // Process the new classification data
 router.post(

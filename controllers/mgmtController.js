@@ -1,5 +1,6 @@
 const utilities = require("../utilities/")
 const mgmtModel = require("../models/mgmt-model.js")
+const utilClassifications = require("../utilities/classification-validation.js")
 
 /* ****************************************
 *  Deliver management view
@@ -25,6 +26,22 @@ async function buildAddClassification(req, res, next) {
     res.render("inventory/add-classification", { // path is relative to the views folder
       title: "Add New Classification",
       nav,
+      flash: req.flash(),
+    })
+}
+
+
+/* ****************************************
+*  Deliver add-inventory view
+* *************************************** */
+async function buildAddInventory(req, res, next) {
+    let nav = await utilities.getNav()
+    let select = await utilClassifications.getClassInput()
+
+    res.render("inventory/add-inventory", { // path is relative to the views folder
+      title: "Add New Inventory Item",
+      nav,
+      select,
       flash: req.flash(),
     })
 }
@@ -76,4 +93,4 @@ async function addClassification(req, res) {
 
 
 
-module.exports = {buildMgmt, buildAddClassification, addClassification}
+module.exports = {buildMgmt, buildAddClassification, addClassification, buildAddInventory}

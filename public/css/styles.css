@@ -220,7 +220,7 @@ div#car-info #price, div#car-info #color {
 p.flash-message {color: #b32121;}
 
 /* Login & Register View */
-div#login, div#register, div#add-classification {
+div#login, div#register, div#add {
   padding: 1rem;
   margin: auto;
   max-width: 80%;
@@ -229,17 +229,18 @@ div#login, div#register, div#add-classification {
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
-div#login form label, div#register form label, div#add-classification form label{
+div#login form label, div#register form label, div#add form label{
   color: #fff;
   font-weight: bold;
 }
 
-div#add-classification form span {
+div#login span, div#register span, div#add span {
   display: block;
-  margin: .5rem 0
+  margin: .5rem 0;
+  color: #fff;
 }
 
-div#login form input, div#register form input, div#add-classification form input {
+div#login form input, div#register form input, div#add form input, div#add form select, div#add form textarea {
   margin: .5rem 0 1rem 0;
   padding: .5rem;
   width: 100%;
@@ -248,7 +249,7 @@ div#login form input, div#register form input, div#add-classification form input
   border: none;
 }
 
-div#login button, div#register button, div#add-classification button{
+div#login button, div#register button, div#add button{
   width: 100%;
   margin: 2.5rem 0 1rem 0;
   padding: .3rem;
@@ -258,7 +259,7 @@ div#login button, div#register button, div#add-classification button{
   background:linear-gradient( to bottom, #bcc6cc, #eee, #bcc6cc);
 }
 
-div#login button:hover, div#register button:hover, div#add-classification button:hover{
+div#login button:hover, div#register button:hover, div#add button:hover{
   background:linear-gradient( to bottom, #adb7bd, #ebebeb, #aeb8be);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
@@ -342,7 +343,7 @@ footer {
     max-width: 45%; /* Allow stretching in large views */
   }
 
-  div#login, div#register, div#add-classification {
+  div#login, div#register, div#add {
     max-width: 40%;
   }
 
