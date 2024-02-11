@@ -91,6 +91,73 @@ async function addClassification(req, res) {
   
 
 
+/* ****************************************
+*  Process Add-Inventory
+* *************************************** */
+async function addInventory(req, res) {
+  let nav = await utilities.getNav();
+  let select = await utilClassifications.getClassInput();
+
+  const {
+      classification_name,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+  } = req.body;
+
+  try {
+      const regResult = await mgmtModel.addInventory(
+          classification_name,
+          inv_make,
+          inv_model,
+          inv_description,
+          inv_image,
+          inv_thumbnail,
+          inv_price,
+          inv_year,
+          inv_miles,
+          inv_color
+      );
+
+      if (regResult instanceof Error) {
+          req.flash("error", "Sorry, the registration failed.");
+          console.error("Error adding item:", regResult);
+          res.status(501).render("../views/inventory/add-inventory", {
+              title: "Add New Inventory Item",
+              nav,
+              select,
+              flash: req.flash(),
+          });
+      } else {
+          console.log("addInventory Flash messages:", req.flash()); // added this console.log to check flash mssgs
+          req.flash(
+              "notice",
+              `Congratulations, you\'ve registered the new ${inv_model} to the inventory.`
+          );
+          res.status(201).render("../views/inventory/add-inventory", {
+              title: "Add New Inventory Item",
+              nav,
+              select,
+              flash: req.flash(),
+          });
+      }
+  } catch (error) {
+      console.error("Error in addInventory:", error);
+      req.flash("error", "Sorry, something went wrong.");
+      res.status(500).render("../views/inventory/add-inventory", {
+          title: "Add New Inventory Item",
+          nav,
+          select,
+          flash: req.flash(),
+      });
+  }
+}
 
 
-module.exports = {buildMgmt, buildAddClassification, addClassification, buildAddInventory}
+module.exports = {buildMgmt, buildAddClassification, addClassification, buildAddInventory, addInventory}

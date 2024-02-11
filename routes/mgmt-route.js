@@ -20,4 +20,12 @@ router.post(
     utilities.handleErrors(mgmtController.addClassification)
   );
 
+// Process the new item data
+router.post(
+  "/add-inventory",
+  mgmtValidate.inventoryRules(), 
+  mgmtValidate.checkInventoryData, 
+  utilities.handleErrors(mgmtController.addInventory)
+);
+
 module.exports = router;
