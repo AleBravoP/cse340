@@ -167,8 +167,9 @@ validate.checkInventoryData = async (req, res, next) => {
 ************************** */
 validate.getClassInput = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let select = '<select id="classification_name" name="classification_name" required>'
-  select += '<option value="" disabled selected>Choose a classification</option>'
+  // let select = '<select id="classification_name" name="classification_name" required>'
+  // select += '<option value="" disabled selected>Choose a classification</option>'
+  let select ='<option value="" disabled selected>Choose a classification</option>'
   data.rows.forEach((row) => {
     select += "<option "
     select +=
@@ -178,7 +179,7 @@ validate.getClassInput = async function (req, res, next) {
       row.classification_name 
     select += "</option>"
   })
-  select += "</select>"
+  // select += "</select>"
   return select
 }
 

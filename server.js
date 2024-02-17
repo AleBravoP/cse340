@@ -34,6 +34,9 @@ const bodyParser = require("body-parser")
 // Require the /mgmt (management) route file
 const mgmtRoute = require("./routes/mgmt-route")
 
+// Require cookie-parser (this is for login)
+const cookieParser = require("cookie-parser")
+
 /* ***********************
  * Middleware
  * ************************/
@@ -59,6 +62,12 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+// allow the cookie parser to be implemented throughout the project
+app.use(cookieParser())
+
+// If a token is present, we will validate it. If there is no token, we simply move on.
+app.use(utilities.checkJWTToken)
 
 /* ***********************
  * View Engine and Templates

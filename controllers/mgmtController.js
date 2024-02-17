@@ -35,16 +35,25 @@ async function buildAddClassification(req, res, next) {
 *  Deliver add-inventory view
 * *************************************** */
 async function buildAddInventory(req, res, next) {
-    let nav = await utilities.getNav()
-    let select = await utilClassifications.getClassInput()
+  try {
+    const nav = await utilities.getNav();
+    
+    // Get select options
+    let select = await utilClassifications.getClassInput(req, res, next);
 
-    res.render("inventory/add-inventory", { // path is relative to the views folder
+    // Render the add-inventory view with select options
+    res.render("inventory/add-inventory", {
       title: "Add New Inventory Item",
       nav,
       select,
       flash: req.flash(),
-    })
+    });
+  } catch (error) {
+    console.error("Error in buildAddInventory:", error);
+    res.status(500).send("Internal Server Error");
+  }
 }
+
 
 
 /* ****************************************
