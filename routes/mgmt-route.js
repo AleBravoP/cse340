@@ -28,4 +28,7 @@ router.post(
   utilities.handleErrors(mgmtController.addInventory)
 );
 
+//route to get inventory list for management view
+router.get("/getInventory/:classification_id", utilities.handleErrors(mgmtController.getInventoryJSON));
+
 module.exports = router;

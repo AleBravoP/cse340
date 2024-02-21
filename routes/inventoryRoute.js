@@ -9,4 +9,7 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 // Route to build item view
 router.get("/detail/:inv_id", invController.buildByInventoryId);
 
+// Route to handle comment submission
+router.post("/detail/:inv_id/add-comment", invController.addComment);
+
 module.exports = router;

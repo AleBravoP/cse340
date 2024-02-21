@@ -1,5 +1,6 @@
 const utilities = require("../utilities/")
 const mgmtModel = require("../models/mgmt-model.js")
+const invModel = require ("../models/inventory-model.js")
 const utilClassifications = require("../utilities/classification-validation.js")
 
 /* ****************************************
@@ -7,12 +8,14 @@ const utilClassifications = require("../utilities/classification-validation.js")
 * *************************************** */
 async function buildMgmt(req, res, next) {
     let nav = await utilities.getNav()
+    // console.log("buildMgmt Flash messages:", req.flash()); // added this console.log to check flash mssgs
 
-    console.log("buildMgmt Flash messages:", req.flash()); // added this console.log to check flash mssgs
+    const selectList = await utilClassifications.getClassInput(req, res, next)
     
     res.render("inventory/management", { // path is relative to the views folder
       title: "Management",
       nav,
+      selectList,
       flash: req.flash(),
     })
 }
@@ -169,4 +172,26 @@ async function addInventory(req, res) {
 }
 
 
-module.exports = {buildMgmt, buildAddClassification, addClassification, buildAddInventory, addInventory}
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+async function getInventoryJSON(req, res, next) {
+    const classification_id = parseInt(req.params.classification_id)
+    console.log("Classification id: ", classification_id)
+    const invData = await invModel.getInventoryByClassificationId(classification_id)
+    if (invData[0].inv_id) {
+      return res.json(invData)
+    } else {
+      next(new Error("No data returned"))
+    }
+  }
+
+
+module.exports = {
+    buildMgmt, 
+    buildAddClassification, 
+    addClassification, 
+    buildAddInventory, 
+    addInventory, 
+    getInventoryJSON
+}

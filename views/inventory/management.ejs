@@ -13,3 +13,21 @@
     <a href="/mgmt/add-classification" title="Click here to add a new classification">Add New Classification</a> 
     <a href="/mgmt/add-inventory" title="Click here to add a new car to inventory">Add New Inventory</a>   
 </div>
+
+<h2>Manage Inventory</h2>
+<p>Select a classification from the list to see the items belonging to the classification</p>
+
+<div>
+  <div class="manage-existing">
+    <h2>Manage Inventory</h2>
+    <p>Select a classification from the list to see the items belonging to the classification.</p>
+    <label for="classification_id" class="label-properties">Classification:</label>
+    <select class="label-properties" id="classification_id" name="classification_id" required value="<%- locals.classification_id %>">
+      <%- selectList%>
+    </select>
+
+    <table id="inventoryDisplay"></table>
+    <noscript>JavaScript must be enabled to use this page.</noscript>
+    <script src="../../js/inventory.js"></script>
+  </div>  
+</div>

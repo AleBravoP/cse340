@@ -81,6 +81,54 @@ Util.buildItemDetails = async function(data){
   return info
 }
 
+/* ****************************************
+ * Build HTML representation of comments for an inventory item
+ **************************************** */
+Util.buildCommentsView = async function (inv_id) {
+  try {
+    const comments = await getCommentsByInventoryId(inv_id); // You need to implement this function
+    let commentsHTML = '<div id="comments-section">';
+    
+    if (comments.length > 0) {
+      commentsHTML += '<h2>Comments</h2>';
+      commentsHTML += '<ul>';
+      
+      comments.forEach(comment => {
+        commentsHTML += '<li>';
+        commentsHTML += `<p>${comment.comment}</p>`;
+        commentsHTML += '<span>Posted by: ' + comment.username + '</span>';
+        commentsHTML += '</li>';
+      });
+
+      commentsHTML += '</ul>';
+    } else {
+      commentsHTML += '<p>No comments yet. Be the first to comment!</p>';
+    }
+
+    commentsHTML += '</div>';
+    return commentsHTML;
+  } catch (error) {
+    console.error("buildCommentsView error: " + error);
+    return ''; // Return an empty string or handle the error as needed
+  }
+}
+
+/* ***************************
+ *  Get comments by inv_id
+ * ************************** */
+async function getCommentsByInventoryId(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.comments 
+      WHERE inv_id = $1`,
+      [inv_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getCommentsByInventoryId error: " + error);
+    return [];
+  }
+}
 
 /* ****************************************
 * Middleware to check token validity

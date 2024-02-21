@@ -43,8 +43,41 @@ async function getCarByInventoryId(inv_id) {
   }
 }
 
+
+/* ***************************
+ *  Get comments by inv_id
+ * ************************** */
+async function getCommentsByInventoryId(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT * FROM public.comments 
+       WHERE inv_id = $1`,
+      [inv_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getCommentsByInventoryId error", error);
+    throw error;
+  }
+}
+
+/* ***************************
+ *  Add a new comment
+ * ************************** */
+async function addComment(inv_id, comment, account_id) {
+  try {
+    const sql =
+      "INSERT INTO public.comments (inv_id, comment, account_id) VALUES ($1, $2, $3) RETURNING *";
+    return await pool.query(sql, [inv_id, comment, account_id]);
+  } catch (error) {
+    return error.message;
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
-  getCarByInventoryId
+  getCarByInventoryId,
+  getCommentsByInventoryId,
+  addComment
 };

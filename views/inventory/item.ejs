@@ -12,3 +12,14 @@
     
     <!-- An EJS code block with an "unescaped" indicator — to allow HTML to be displayed. -->
     <%- item_view %>
+    <%- comments_view %>
+
+<!-- Form for adding new comments -->
+<div id="comment">
+  <form action="/inv/detail/<%= data.inv_id %>/add-comment" method="POST">
+    <label for="comment">Add your comment:</label>
+    <textarea name="comment" rows="4" cols="50" required></textarea>
+    <br>
+    <button type="submit">Submit Comment</button>
+  </form>
+</div>
