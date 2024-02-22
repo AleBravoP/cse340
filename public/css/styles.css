@@ -30,6 +30,8 @@ body {font-family: 'Archivo', sans-serif;}
   color: #000000;
 }
 
+div#tools ul {list-style: none;}
+
 /* ----- NAVIGATION -----*/
 nav {
   margin-top: 1rem;
