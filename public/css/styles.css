@@ -217,10 +217,13 @@ div#car-info #price, div#car-info #color {
 }
 
 /* Flash Message */
-p.flash-message {color: #b32121;}
+p.flash-message {
+  color: #b32121;
+  text-align: center;
+}
 
 /* Login & Register View */
-div#login, div#register, div#add, div#comment {
+div#login, div#register, div#add, div#comments {
   padding: 1rem;
   margin: auto;
   max-width: 80%;
@@ -229,7 +232,7 @@ div#login, div#register, div#add, div#comment {
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
 }
 
-div#login form label, div#register form label, div#add form label, div#comment form label{
+div#login form label, div#register form label, div#add form label, div#comments form label{
   color: #fff;
   font-weight: bold;
 }
@@ -245,7 +248,7 @@ div#register form input,
 div#add form input, 
 div#add form select, 
 div#add form textarea, 
-div#comment form textarea {
+div#comments form textarea {
   margin: .5rem 0 1rem 0;
   padding: .5rem;
   width: 100%;
@@ -254,7 +257,7 @@ div#comment form textarea {
   border: none;
 }
 
-div#login button, div#register button, div#add button, div#comment button{
+div#login button, div#register button, div#add button, div#comments button{
   width: 100%;
   margin: 2.5rem 0 1rem 0;
   padding: .3rem;
@@ -285,6 +288,27 @@ div#mgmt-menu a {
   padding: .8rem 0;
 }
 
+
+/* comments section */
+div#comments-section {
+  padding: 1rem;
+  margin: 2rem auto 1rem auto;
+  max-width: 80%;
+  background-color: #10709ca8;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.3);
+}
+
+div#comments-section ul {padding-left: 0;}
+div#comments-section ul li {
+  list-style: none;
+  border-top: .5px solid #ffffff8e;
+}
+
+div#comments-section span {
+  font-size: small;
+  color: #0000009a;
+}
 
 /* ----- FOOTER -----*/
 

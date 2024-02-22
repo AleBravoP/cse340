@@ -47,13 +47,29 @@ async function getCarByInventoryId(inv_id) {
 /* ***************************
  *  Get comments by inv_id
  * ************************** */
+// async function getCommentsByInventoryId(inv_id) {
+//   try {
+//     const data = await pool.query(
+//       `SELECT * FROM public.comments 
+//        WHERE inv_id = $1`,
+//       [inv_id]
+//     );
+//     return data.rows;
+//   } catch (error) {
+//     console.error("getCommentsByInventoryId error", error);
+//     throw error;
+//   }
+// }
 async function getCommentsByInventoryId(inv_id) {
   try {
     const data = await pool.query(
-      `SELECT * FROM public.comments 
-       WHERE inv_id = $1`,
+      `SELECT c.*, a.account_firstname
+       FROM public.comments AS c
+       JOIN public.account AS a ON c.account_id = a.account_id
+       WHERE c.inv_id = $1`,
       [inv_id]
     );
+
     return data.rows;
   } catch (error) {
     console.error("getCommentsByInventoryId error", error);

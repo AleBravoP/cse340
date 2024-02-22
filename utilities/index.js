@@ -2,6 +2,7 @@ const invModel = require("../models/inventory-model")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 const Util = {}
+const pool = require("../database/")
  
 /* ************************
 * Constructs the nav HTML unordered list
@@ -89,14 +90,16 @@ Util.buildCommentsView = async function (inv_id) {
     const comments = await getCommentsByInventoryId(inv_id); // You need to implement this function
     let commentsHTML = '<div id="comments-section">';
     
+    console.log("Comments: ",comments) // Added this console log to see the comments in terminal
+    
     if (comments.length > 0) {
       commentsHTML += '<h2>Comments</h2>';
       commentsHTML += '<ul>';
       
       comments.forEach(comment => {
         commentsHTML += '<li>';
+        commentsHTML += '<span>Posted by: ' + comment.account_firstname + '</span>';
         commentsHTML += `<p>${comment.comment}</p>`;
-        commentsHTML += '<span>Posted by: ' + comment.username + '</span>';
         commentsHTML += '</li>';
       });
 
@@ -119,7 +122,9 @@ Util.buildCommentsView = async function (inv_id) {
 async function getCommentsByInventoryId(inv_id) {
   try {
     const data = await pool.query(
-      `SELECT * FROM public.comments 
+      `SELECT comments.*, account.account_firstname
+      FROM public.comments 
+      LEFT JOIN public.account ON comments.account_id = account.account_id
       WHERE inv_id = $1`,
       [inv_id]
     );
